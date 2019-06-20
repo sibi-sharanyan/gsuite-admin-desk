@@ -1,0 +1,68 @@
+{{#if updateuser}}
+
+<div class="bg-info upflex"> <span> <strong> Updating User with id: </strong> {{upuser}} </span> <button
+        onclick={{action "cancelupdate"}} class="btn btn-danger">Cancel</button> </div>
+
+{{/if}}
+<form class="generalform">
+    <div class="form-group">
+        Name
+        {{input type="text" class="form-control" placeholder="Enter Name" value=name}}
+
+    </div>
+    <div class="form-group">
+        Family Name
+        {{input type="text" class="form-control" placeholder="Enter Family Name" value=fname}}
+
+    </div>
+
+
+    {{#unless updateuser}}
+    <div class="radio-cont">
+
+        <div class="radio">
+            <label onclick={{action "rand"}}><input onclick={{action "rand"}} type="radio" name="optradio"
+                    checked={{rand}}>Random Password</label>
+        </div>
+        <div class="radio">
+            <label onclick={{action "typenow"}}><input onclick={{action "typenow"}} type="radio" name="optradio"
+                    checked={{typenow}}>Type
+                Password</label>
+        </div>
+        <div class="radio">
+            <label onclick={{action "blank"}}><input onclick={{action "blank"}} type="radio" name="optradio"
+                    checked={{blank}}>Leave
+                Password Blank</label>
+        </div>
+        <div class="radio">
+            <label onclick={{action "samename"}}><input onclick={{action "samename"}} type="radio" name="optradio"
+                    checked={{samename}}>Same
+                as user Logon Name</label>
+        </div>
+
+    </div>
+
+    {{#if typenow}}
+    <div class="form-group" id="passbox">
+        Password
+        {{input type="password" class="form-control"  placeholder="Enter Password" value=password }}
+    </div>
+
+    {{/if}}
+
+    {{/unless}}
+
+    <div class="form-group">
+        Email
+        {{input type="text" class="form-control"  placeholder="Enter Email" value = email}}
+    </div>
+
+    <div class="checkbox">
+        <label onclick={{action "checkboxact"}}><input onclick={{action "checkboxact"}} type="checkbox"
+                checked={{passchange}} value="">Ask For
+            Password Change on next login</label>
+    </div>
+
+</form>
+
+<button class="btn btn-success float-right" {{action "nextpage" }}>Next Page ></button>

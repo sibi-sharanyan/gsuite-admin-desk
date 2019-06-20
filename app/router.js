@@ -7,6 +7,14 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('login');
+  this.route('alluser');
+  this.route('allgroup');
+  this.route('createuser', function() {
+    this.route('general');
+    this.route('contact');
+    this.route('organization');
+  });
 });
 
 export default Router;

@@ -1,0 +1,73 @@
+<div class="bg-info filtername"> <span> <strong>Filter By Group :</strong> {{groupname}} </span> <button
+        class="btn btn-danger" onclick={{action "resetgroup"}}>
+        Remove Selection</button> </div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-dark">
+        <thead>
+
+
+            <th>Full Name</th>
+            <th>Family Name</th>
+            <th>Given Name</th>
+
+            <th>Last Login Time</th>
+            <th>Creation Time</th>
+            <th>Email</th>
+            <th>Admin</th>
+            <th>Change Password At NextLogin</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </thead>
+
+        <tbody>
+            {{#each users as |user|}}
+            <tr>
+                <td class=""> {{user.name.fullName}} </td>
+                <td class=""> {{user.name.familyName}} </td>
+                <td class=""> {{user.name.givenName}} </td>
+
+                <td class=""> {{utc user.lastLoginTime}}</td>
+                <td class=""> {{utc user.creationTime}} </td>
+                <td class=""> {{user.primaryEmail}} </td>
+                <td class=""> {{user.isAdmin}} </td>
+                <td class=""> {{user.changePasswordAtNextLogin}} </td>
+
+                {{#unless user.isAdmin}}
+                <td>
+                    <button class="btn btn-danger" onclick={{{action "deleteuser" user.id}}}>Delete</button>
+                </td>
+
+                <td> <button class="btn btn-danger" onclick={{{action "updateuser" user.id}}}>Update</button> </td>
+
+                <td> <button class="btn btn-danger" onclick={{{action "changepass" user.id}}}>Change Password</button>
+                </td>
+
+                {{#if user.suspended}}
+
+                <td> <button class="btn btn-danger" id={{user.id}}
+                        onclick={{action "suspend" user.id  }}>Activate</button>
+                </td>
+
+                {{else}}
+
+                <td> <button class="btn btn-danger" id={{user.id}}
+                        onclick={{action "suspend" user.id  }}>Suspend</button>
+                </td>
+
+                {{/if}}
+
+
+                {{/unless }}
+
+
+
+            </tr>
+            {{/each}}
+        </tbody>
+
+
+    </table>
+
+</div>

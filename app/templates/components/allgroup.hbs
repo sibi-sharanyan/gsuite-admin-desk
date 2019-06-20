@@ -1,0 +1,33 @@
+<div class="table-responsive">
+    <table class="table table-striped table-dark">
+        <thead>
+
+            <th>Group Kind</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Direct Members count</th>
+            <th>Description</th>
+            <th>Admin Created</th>
+
+        </thead>
+
+        <tbody>
+            {{#each groups as |group|}}
+            <tr>
+                <td class=""> {{group.kind}} </td>
+                <td class=""> {{group.email}} </td>
+                <td class=""> {{group.name}} </td>
+                <td class="selectgroup" onclick={{action "setgroupuser" group.id group.name }}>
+                    {{group.directMembersCount}} </td>
+
+                <td class=""> {{group.description}} </td>
+                <td class=""> {{group.adminCreated}} </td>
+
+
+            </tr>
+            {{/each}}
+        </tbody>
+
+
+    </table>
+</div>

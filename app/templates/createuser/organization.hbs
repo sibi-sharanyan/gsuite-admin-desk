@@ -1,0 +1,54 @@
+<form class="generalform">
+    <div class="form-group">
+        Organization name
+        {{input type="text" class="form-control" placeholder="Enter Organization name" value=orgname}}
+
+    </div>
+    <div class="form-group">
+        Work title
+        {{input type="text" class="form-control" placeholder="Enter Work title" value=workTitle}}
+
+    </div>
+    <div class="form-group">
+        Description
+        {{input type="text" class="form-control"  placeholder="Enter Description" value=Description }}
+    </div>
+
+    <div class="form-group">
+        Organization Location
+        {{input type="text" class="form-control"  placeholder="Enter Organization Location" value = orglocation}}
+    </div>
+
+    <div class="form-group">
+        Organization domain
+        {{input type="text" class="form-control"  placeholder="Enter Organization domain" value = orgdomain}}
+    </div>
+
+    <div class="radio-cont">
+
+        <div class="radio" onclick={{action "setgsuite"}}>
+            <label><input type="radio" name="optradio" checked>Save in G-suite</label>
+        </div>
+        <div class="radio" onclick={{action "setdb"}}>
+            <label><input type="radio" name="optradio">Save as Local Account</label>
+        </div>
+    </div>
+
+
+
+</form>
+
+
+{{#if upuser}}
+<button class="btn btn-success float-right" onclick={{action "updaterec"}}>Update Record </button>
+
+
+{{else}}
+<button class="btn btn-success float-right" onclick={{action "submitval"}}>Create Record </button>
+
+
+{{/if}}
+
+
+<button class="btn btn-success float-left" {{action "prevpage" }}>
+    &lt; Previous Page </button>

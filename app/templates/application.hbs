@@ -1,5 +1,27 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+<div class="container">
 
-{{outlet}}
+    <div class="mynav">
+
+        {{#if loggedin}}
+        {{#link-to "createuser.general" tagName = "button" class = "btn btn-warning"}}Create User{{/link-to}}
+        {{#link-to "alluser" tagName = "button" class = "btn btn-primary"}}View All users{{/link-to}}
+        {{#link-to "allgroup" tagName = "button" class = "btn btn-warning"}}View All Groups{{/link-to}}
+        <h1><button class="btn btn-dark" onclick={{action "logout"}}>Log out</button></h1>
+
+        {{else}} <h1><button class="btn btn-success" onclick={{action "login"}}>Log in</button></h1>
+        {{/if}}
+    </div>
+    {{#if loggedin}}
+    {{outlet}}
+
+
+
+
+
+    {{/if}}
+</div>
+
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
